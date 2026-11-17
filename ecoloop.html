@@ -8,10 +8,12 @@
 <link rel="stylesheet" href="ecoloop.css">
 </head>
 <body>
+<div id="progress"></div>
 <header>
  <div class="wrap">
   <a class="logo" href="#top">↻ ECOLOOP</a>
-  <nav>
+  <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  <nav id="menu">
    <a href="#projeto">O projeto</a><a href="#produtos">Produtos</a><a href="#como-funciona">Como funciona</a><a href="#empresas">Empresas</a><a href="#contato">Contato</a>
   </nav>
  </div>
@@ -95,15 +97,41 @@
  </div>
 </div></section>
 
-<section><div class="wrap">
+<section id="ferramentas"><div class="wrap">
+ <p class="eyebrow">Na prática</p>
+ <h2>Descubra seu impacto.</h2>
+ <p class="lead">Veja se o que você tem em casa pode entrar no ciclo e quanto isso pode render.</p>
+ <div class="tools">
+  <div class="card">
+   <h3>Posso entregar isso?</h3>
+   <p>Toque em um item para ver o que acontece com ele.</p>
+   <div class="chips" id="quiz-chips"></div>
+   <div class="verdict" id="quiz-verdict" aria-live="polite"><div class="ico">?</div><div><strong>Escolha um item</strong><span>O resultado aparece aqui.</span></div></div>
+  </div>
+  <div class="card">
+   <h3>Calculadora de impacto</h3>
+   <p>Estime o que a sua entrega evita de descarte.</p>
+   <div class="field"><label for="calc-mat">Material</label><select id="calc-mat"></select></div>
+   <div class="field"><label for="calc-qtd">Quantidade <span id="calc-qtd-out"></span></label><input type="range" id="calc-qtd" min="1" max="30" value="5"></div>
+   <div class="stats" aria-live="polite">
+    <div class="stat"><b id="calc-kg">0</b><span>kg de resíduo evitado</span></div>
+    <div class="stat"><b id="calc-bolsas">0</b><span id="calc-bolsas-txt">bolsas possíveis</span></div>
+   </div>
+  </div>
+ </div>
+ <p class="note">Ferramentas ilustrativas: a lista de materiais aceitos e os valores da calculadora são exemplos e serão substituídos pelos dados oficiais do projeto.</p>
+</div></section>
+
+<section id="transparencia"><div class="wrap">
  <p class="eyebrow">Nosso compromisso</p>
  <h2>Transparência em cada etapa.</h2>
  <p class="lead">Para construir confiança, o EcoLoop pretende comunicar os materiais aceitos, os critérios de triagem, a destinação e os resultados efetivamente registrados.</p>
  <div class="grid3">
-  <div class="card"><h3>Materiais coletados</h3><p>Quantidade total recebida nos pontos de coleta.</p></div>
-  <div class="card"><h3>Materiais reaproveitados ou reciclados</h3><p>Quantidade encaminhada para cada destinação.</p></div>
-  <div class="card"><h3>Bolsas produzidas</h3><p>Quantidade de produtos efetivamente fabricados.</p></div>
+  <div class="card"><div class="num" data-count="120" data-suffix=" kg">0</div><h3>Materiais coletados</h3><p>Quantidade total recebida nos pontos de coleta.</p></div>
+  <div class="card"><div class="num" data-count="85" data-suffix=" kg">0</div><h3>Materiais reaproveitados ou reciclados</h3><p>Quantidade encaminhada para cada destinação.</p></div>
+  <div class="card"><div class="num" data-count="40" data-suffix=" bolsas">0</div><h3>Bolsas produzidas</h3><p>Quantidade de produtos efetivamente fabricados.</p></div>
  </div>
+ <p class="note">Números ilustrativos. Substitua pelos dados reais do projeto (atributo data-count de cada número).</p>
 </div></section>
 
 <section id="contato" class="contact"><div class="wrap">
@@ -111,11 +139,19 @@
  <h2>Faça parte desse ciclo.</h2>
  <p class="lead">Quer conhecer os produtos, participar das ações ou conversar sobre uma parceria? Entre em contato com a equipe EcoLoop.</p>
  <div class="cbox">
-  <div><h3>Contato EcoLoop</h3><p>Adicione aqui o e-mail, WhatsApp ou Instagram oficial do projeto.</p></div>
-  <a class="btn beige" href="#contato">Adicionar contato</a>
+  <div><h3>Contato EcoLoop</h3><p>Fale com a equipe pelo canal que preferir.</p></div>
+  <div class="clinks">
+   <a class="btn beige" data-contact="whatsapp" href="#contato" target="_blank" rel="noopener">WhatsApp</a>
+   <a class="btn light" data-contact="email" href="#contato">E-mail</a>
+   <a class="btn light" data-contact="instagram" href="#contato" target="_blank" rel="noopener">Instagram</a>
+  </div>
  </div>
 </div></section>
 </main>
+
+<a class="wa-float" data-contact="whatsapp" href="#contato" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+ <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 4C9.4 4 4 9 4 15.2c0 2.200.7 4.200 1.800 5.900L4.200 28l7-1.700c1.500.8 3 1.200 4.800 1.200 6.600 0 12-5 12-11.200S22.600 4 16 4z"/><circle cx="11" cy="15.500" r="1.800" fill="#25d366"/><circle cx="16" cy="15.500" r="1.800" fill="#25d366"/><circle cx="21" cy="15.500" r="1.800" fill="#25d366"/></svg>
+</a>
 
 <footer><div class="wrap">
  <a class="logo" href="#top">↻ ECOLOOP</a>
@@ -140,6 +176,148 @@
   entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');io.unobserve(en.target);}});
  },{threshold:0.15});
  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+<script>
+(function(){
+ var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ var $=function(q){return Array.prototype.slice.call(document.querySelectorAll(q))};
+
+ /* Cabeçalho + link ativo + barra de progresso */
+ var header=document.querySelector('header');
+ var links=$('nav a');
+ var secs=$('main section[id]');
+ var bar=document.getElementById('progress');
+ function onScroll(){
+  var y=window.scrollY||0;
+  header.classList.toggle('scrolled',y>40);
+  var cur='';
+  secs.forEach(function(sec){if(sec.getBoundingClientRect().top<=140)cur=sec.id});
+  links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur)});
+  if(bar){var h=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(h>0?y/h*100:0)+'%'}
+ }
+ window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ /* Contadores */
+ function runCount(el){
+  var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'';
+  if(reduce){el.textContent=end.toLocaleString('pt-BR')+suf;return}
+  var t0=null,dur=1600;
+  function tick(t){
+   if(!t0)t0=t;var k=Math.min((t-t0)/dur,1),e=1-Math.pow(1-k,3);
+   el.textContent=Math.round(end*e).toLocaleString('pt-BR')+suf;
+   if(k<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+ }
+
+ if(!('IntersectionObserver' in window)){
+  $('.num').forEach(runCount);return;
+ }
+ var io=new IntersectionObserver(function(es){
+  es.forEach(function(en){
+   if(!en.isIntersecting)return;
+   io.unobserve(en.target);
+   runCount(en.target);
+  });
+ },{threshold:0.4});
+ $('.num').forEach(function(n){io.observe(n)});
+})();
+</script>
+<script>
+/* ===== CONTATO DO PROJETO: troque os valores abaixo ===== */
+var CONTATO={
+ whatsapp:'5500000000000',          // só números: 55 + DDD + número
+ email:'contato@example.com',
+ instagram:'seu_instagram',         // sem o @
+ mensagem:'Olá! Vim pelo site do EcoLoop e gostaria de saber mais.'
+};
+(function(){
+ var hrefs={
+  whatsapp:'https://wa.me/'+CONTATO.whatsapp+'?text='+encodeURIComponent(CONTATO.mensagem),
+  email:'mailto:'+CONTATO.email+'?subject='+encodeURIComponent('Contato pelo site EcoLoop'),
+  instagram:'https://instagram.com/'+CONTATO.instagram
+ };
+ Array.prototype.forEach.call(document.querySelectorAll('[data-contact]'),function(a){
+  a.setAttribute('href',hrefs[a.getAttribute('data-contact')]);
+ });
+
+ /* Menu do celular */
+ var header=document.querySelector('header');
+ var btn=document.querySelector('.menu-btn');
+ function setMenu(open){
+  header.classList.toggle('open',open);
+  btn.setAttribute('aria-expanded',open);
+  btn.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
+ }
+ btn.addEventListener('click',function(){setMenu(!header.classList.contains('open'))});
+ Array.prototype.forEach.call(document.querySelectorAll('nav a'),function(a){a.addEventListener('click',function(){setMenu(false)})});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+ window.addEventListener('resize',function(){if(window.innerWidth>960)setMenu(false)});
+})();
+</script>
+<script>
+/* ===== CONFIGURAÇÃO DAS FERRAMENTAS: edite com os dados reais do projeto ===== */
+/* s: 'sim' (aceito), 'avaliar' (depende da triagem) ou 'nao' (não aceito) */
+var ITENS=[
+ {n:'Camisetas e tecidos limpos',s:'sim',t:'Podem virar matéria-prima das bolsas, se estiverem em boa condição.'},
+ {n:'Calça jeans',s:'sim',t:'O jeans é resistente e muito bom para fazer bolsas.'},
+ {n:'Lona de banner',s:'sim',t:'Material forte e impermeável, ideal para reaproveitar.'},
+ {n:'Garrafa PET',s:'sim',t:'Segue para reciclagem especializada com os parceiros.'},
+ {n:'Roupas rasgadas ou sujas',s:'avaliar',t:'Passam pela triagem. Se não servirem para bolsas, podem ser recicladas.'},
+ {n:'Pilhas e eletrônicos',s:'nao',t:'Exigem descarte específico. Procure um ponto de coleta apropriado.'},
+ {n:'Lixo orgânico',s:'nao',t:'Não é aceito. Prefira a compostagem.'}
+];
+/* kg: peso médio de cada unidade | kgBolsa: kg de material por bolsa (null = vai para reciclagem) */
+var MATERIAIS=[
+ {n:'Camisetas',un:'camisetas',kg:0.2,kgBolsa:0.35,max:30},
+ {n:'Calças jeans',un:'calças',kg:0.6,kgBolsa:0.5,max:20},
+ {n:'Lona de banner (m²)',un:'m²',kg:0.45,kgBolsa:0.6,max:30},
+ {n:'Garrafas PET',un:'garrafas',kg:0.03,kgBolsa:null,max:100}
+];
+(function(){
+ var fmt=function(v){return v.toLocaleString('pt-BR',{maximumFractionDigits:1})};
+ var $=function(id){return document.getElementById(id)};
+
+ /* Posso entregar isso? */
+ var box=$('quiz-chips'),ver=$('quiz-verdict');
+ var rot={sim:['✓','Pode entregar'],avaliar:['!','Passa por triagem'],nao:['✕','Não aceitamos']};
+ ITENS.forEach(function(it){
+  var b=document.createElement('button');
+  b.type='button';b.className='chip';b.textContent=it.n;b.setAttribute('aria-pressed','false');
+  b.addEventListener('click',function(){
+   Array.prototype.forEach.call(box.children,function(c){c.setAttribute('aria-pressed','false')});
+   b.setAttribute('aria-pressed','true');
+   ver.className='verdict '+it.s;
+   ver.innerHTML='<div class="ico"></div><div><strong></strong><span></span></div>';
+   ver.querySelector('.ico').textContent=rot[it.s][0];
+   ver.querySelector('strong').textContent=rot[it.s][1];
+   ver.querySelector('span').textContent=it.t;
+  });
+  box.appendChild(b);
+ });
+
+ /* Calculadora */
+ var sel=$('calc-mat'),qtd=$('calc-qtd');
+ MATERIAIS.forEach(function(m,i){var o=document.createElement('option');o.value=i;o.textContent=m.n;sel.appendChild(o)});
+ function calc(){
+  var m=MATERIAIS[+sel.value],q=+qtd.value;
+  $('calc-qtd-out').textContent='('+q+' '+m.un+')';
+  var kg=q*m.kg;
+  $('calc-kg').textContent=fmt(kg);
+  if(m.kgBolsa){
+   $('calc-bolsas').textContent='≈ '+fmt(kg/m.kgBolsa);
+   $('calc-bolsas-txt').textContent='bolsas possíveis (estimativa)';
+  }else{
+   $('calc-bolsas').textContent='♻';
+   $('calc-bolsas-txt').textContent='segue para reciclagem especializada';
+  }
+ }
+ sel.addEventListener('change',function(){
+  var m=MATERIAIS[+sel.value];qtd.max=m.max;if(+qtd.value>m.max)qtd.value=m.max;calc();
+ });
+ qtd.addEventListener('input',calc);
+ calc();
 })();
 </script>
 </body>
