@@ -1,0 +1,73 @@
+/* EcoLoop: seção Bolsas e pontos (usa as variáveis de ecoloop.css) */
+#bolsas{padding:90px 24px;background:var(--bg)}
+#bolsas .b-wrap{max-width:1100px;margin:0 auto}
+#bolsas h2{color:var(--dark);font-size:clamp(28px,4vw,40px);margin:0 0 10px}
+#bolsas .b-intro{color:var(--text);max-width:60ch;margin:0 0 32px;line-height:1.6}
+
+.b-saldo{background:var(--dark);color:#fff;border-radius:28px;padding:28px;display:grid;gap:22px;margin-bottom:36px}
+.b-bloco{display:grid;gap:14px}
+.b-usar{border-top:1px solid rgba(255,255,255,.18);padding-top:22px}
+.b-usar-top{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.b-usar-top strong{display:block;font-size:clamp(24px,4vw,34px);color:var(--sage)}
+.b-usar-top span{opacity:.85;font-size:15px}
+.b-controle label{font-size:14px;opacity:.85;margin-right:2px}
+.b-saldo-num{font-size:clamp(40px,7vw,64px);font-weight:700;line-height:1;color:var(--sage)}
+.b-saldo-num small{font-size:16px;font-weight:400;color:#fff;margin-left:8px}
+.b-saldo-num+.b-controle{margin-top:0}
+.b-saldo p{margin:0;opacity:.85;max-width:44ch;line-height:1.5}
+.b-controle{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.b-controle button{border:0;border-radius:999px;padding:10px 18px;font:inherit;font-weight:600;cursor:pointer;background:var(--light);color:var(--dark)}
+.b-controle button:hover{background:var(--sage)}
+.b-controle input[type=number]{width:110px;border:2px solid var(--sage);border-radius:999px;padding:9px 16px;font:inherit;font-weight:600;color:var(--dark);background:#fff}
+.b-saldo input[type=range]{width:100%;accent-color:var(--sage)}
+.b-controle button:focus-visible,.b-controle input:focus-visible,.b-card button:focus-visible,.b-saldo input[type=range]:focus-visible{outline:3px solid var(--tan);outline-offset:2px}
+
+.b-grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.b-card{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
+.b-art{background:var(--light);padding:26px;display:grid;place-items:center}
+.b-art svg{width:120px;height:120px}
+.b-info{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.b-info h3{margin:0;color:var(--dark);font-size:18px}
+.b-mat{color:var(--text);font-size:14px;margin:0}
+.b-preco{display:flex;align-items:baseline;gap:10px;margin-top:6px;flex-wrap:wrap}
+.b-preco .final{font-size:26px;font-weight:700;color:var(--dark)}
+.b-preco .antigo{color:var(--text);text-decoration:line-through;font-size:15px}
+.b-desc{font-size:14px;color:var(--green);min-height:21px;margin:0}
+.b-barra{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.b-barra i{display:block;height:100%;background:var(--green);border-radius:99px;transition:width .35s ease}
+.b-meta{font-size:13px;color:var(--text);margin:0}
+.b-card button{margin-top:auto;border:0;border-radius:999px;padding:12px 18px;font:inherit;font-weight:600;cursor:pointer;background:var(--dark);color:#fff}
+.b-card button:hover{background:var(--green)}
+.b-nota{margin-top:26px;font-size:13px;color:var(--text);background:var(--beige);border-radius:18px;padding:14px 18px;line-height:1.5}
+@media (prefers-reduced-motion:reduce){.b-barra i{transition:none}}
+
+/* Saldo vindo da entrega */
+.b-saldo-info{margin:0;opacity:.9;max-width:52ch;line-height:1.5}
+.b-link{justify-self:start;display:inline-block;background:var(--sage);color:var(--dark);font-weight:600;border-radius:999px;padding:10px 18px;text-decoration:none}
+.b-link:hover{background:var(--light)}
+.b-link:focus-visible{outline:3px solid var(--tan);outline-offset:2px}
+.b-usar input:disabled{opacity:.5;cursor:not-allowed}
+.b-tabela{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.b-tabela li{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px 18px;display:grid;gap:2px}
+.b-tabela strong{color:var(--dark)}
+.b-tabela span{color:var(--text);font-size:14px}
+
+/* Quiz e calculadora (itens gerados por calculadora.js) */
+#quiz-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cx-chip{border:1.5px solid var(--sage);background:#fff;color:var(--dark);border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}
+.cx-chip:hover{background:var(--light)}
+.cx-chip.on{background:var(--dark);color:#fff;border-color:var(--dark)}
+.cx-chip:focus-visible,.cx-step button:focus-visible,.cx-step input:focus-visible{outline:3px solid var(--tan);outline-offset:2px}
+.verdict[data-estado="sim"] .ico{background:var(--green);color:#fff}
+.verdict[data-estado="parcial"] .ico{background:var(--tan);color:var(--dark)}
+.verdict[data-estado="nao"] .ico{background:#c0584a;color:#fff}
+.cx-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.cx-info{display:grid;gap:2px}
+.cx-info strong{color:var(--dark)}
+.cx-info span{font-size:13px;color:var(--text)}
+.cx-step{display:flex;align-items:center;gap:6px}
+.cx-step button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--sage);background:#fff;color:var(--dark);font:inherit;font-size:18px;line-height:1;cursor:pointer}
+.cx-step button:hover{background:var(--light)}
+.cx-step input{width:58px;text-align:center;border:1.5px solid var(--sage);border-radius:999px;padding:7px 4px;font:inherit;font-weight:600;color:var(--dark);background:#fff}
+.cx-sub{min-width:64px;text-align:right;font-weight:600;color:var(--green)}
+@media (max-width:520px){.cx-row{grid-template-columns:1fr auto}.cx-sub{grid-column:1/-1;text-align:left}}

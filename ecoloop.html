@@ -6,6 +6,8 @@
 <title>EcoLoop | Mais que bolsas, são ciclos de vida</title>
 <meta name="description" content="EcoLoop transforma materiais que seriam descartados em bolsas sustentáveis, conectando pessoas e empresas a um jeito mais consciente de consumir e produzir.">
 <link rel="stylesheet" href="ecoloop.css">
+<link rel="stylesheet" href="mascote.css">
+<link rel="stylesheet" href="bolsas.css">
 </head>
 <body>
 <div id="progress"></div>
@@ -14,7 +16,7 @@
   <a class="logo" href="#top">↻ ECOLOOP</a>
   <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   <nav id="menu">
-   <a href="#projeto">O projeto</a><a href="#produtos">Produtos</a><a href="#como-funciona">Como funciona</a><a href="#empresas">Empresas</a><a href="#contato">Contato</a>
+   <a href="#projeto">O projeto</a><a href="#produtos">Produtos</a><a href="#bolsas">Bolsas</a><a href="#como-funciona">Como funciona</a><a href="#empresas">Empresas</a><a href="#contato">Contato</a>
   </nav>
  </div>
 </header>
@@ -30,13 +32,12 @@
    <a class="btn ghost" href="#empresas">Quero participar</a>
   </div>
  </div>
- <div class="art" aria-hidden="true">
-  <svg viewBox="0 0 300 340" fill="none">
-   <path d="M105 112V80c0-40 90-40 90 0v32" stroke="#1c3b2f" stroke-width="14" stroke-linecap="round"/>
-   <rect x="30" y="110" width="240" height="210" rx="26" fill="#e3d5b8" stroke="#1c3b2f" stroke-width="6"/>
-   <text x="150" y="196" text-anchor="middle" font-family="Arial" font-weight="900" font-size="38" fill="#1c3b2f" letter-spacing="6">ECO</text>
-   <text x="150" y="250" text-anchor="middle" font-family="Arial" font-weight="900" font-size="38" fill="#1c3b2f" letter-spacing="6">LOOP</text>
-  </svg>
+ <div class="art">
+  <div class="mascot" id="mascote" role="button" tabindex="0" aria-label="Loopinho, o mascote do EcoLoop. Clique para interagir">
+   <div class="speech" id="mascote-fala" aria-live="polite">Oi! Eu sou o Loopinho 👍 Clique em mim!</div>
+   <img class="m-main" src="img/loopinho.png" alt="Loopinho, mascote do EcoLoop, uma bolsa sorridente fazendo joinha">
+   <div class="m-shadow"></div>
+  </div>
   <div class="tag">REUSE • RECRIE • REPITA</div>
  </div>
 </div>
@@ -65,6 +66,70 @@
    <h3>Modelo sustentável 03</h3><p>Inclua a imagem do produto, detalhes de fabricação e informações para interessados.</p></div>
  </div>
  <p class="note">Os cards são espaços demonstrativos para cadastrar os modelos reais. Não representam produtos, preços ou estoque confirmados.</p>
+</div></section>
+
+<section id="ferramentas"><div class="wrap">
+ <p class="eyebrow">Na prática</p>
+ <h2>Descubra seu impacto.</h2>
+ <p class="lead">Veja se o que você tem em casa pode entrar no ciclo e quantos pontos a sua entrega rende.</p>
+ <div class="tools">
+  <div class="card">
+   <h3>Posso entregar isso?</h3>
+   <p>Toque em um item para ver o que acontece com ele.</p>
+   <div class="chips" id="quiz-chips"></div>
+   <div class="verdict" id="quiz-verdict" aria-live="polite"><div class="ico">?</div><div><strong>Escolha um item</strong><span>O resultado aparece aqui.</span></div></div>
+  </div>
+  <div class="card">
+   <h3>Calculadora de impacto</h3>
+   <p>Monte a sua entrega e veja o que ela evita de descarte.</p>
+   <div class="calc-rows" id="calc-rows"></div>
+   <div class="stats3" aria-live="polite">
+    <div class="stat"><b id="calc-kg">0</b><span>kg de resíduo evitado</span></div>
+    <div class="stat"><b id="calc-bolsas">0</b><span>bolsas possíveis</span></div>
+    <div class="stat"><b id="calc-pts">0</b><span>pontos da entrega</span></div>
+   </div>
+   <div class="meter">
+    <div class="meter-top"><span id="calc-bar-txt">0 bolsas completas</span><span id="calc-bar-pct">0% da próxima</span></div>
+    <div class="meter-bar"><i id="calc-bar"></i></div>
+   </div>
+   <div class="calc-msg"><img src="img/pose-ativo.png" alt=""><p id="calc-msg" aria-live="polite"></p></div>
+   <div class="calc-actions">
+    <a class="btn primary disabled" id="calc-wa" target="_blank" rel="noopener" aria-disabled="true">Quero entregar isso</a>
+    <button type="button" class="link-btn" id="calc-reset">Limpar</button>
+    <a class="link-btn" href="#bolsas">Usar meus pontos nas bolsas</a>
+   </div>
+  </div>
+ </div>
+ <p class="note">Ferramentas ilustrativas: a lista de materiais aceitos, os pesos e os pontos da calculadora são exemplos e serão substituídos pelos dados oficiais do projeto.</p>
+</div></section>
+
+<section id="bolsas"><div class="b-wrap">
+ <p class="eyebrow">Pontos que viram desconto</p>
+ <h2>Suas entregas viram desconto.</h2>
+ <p class="b-intro">Cada material entregue em um ponto de coleta da EcoLoop gera pontos. Os pontos da sua entrega abatem o preço das bolsas: você escolhe quantos quer usar.</p>
+ <ul class="b-tabela" id="tabela-pontos" aria-label="Pontos por material"></ul>
+ <div class="b-saldo">
+  <div class="b-bloco">
+   <div class="b-saldo-num"><span id="pts-saldo">0</span><small>pontos da sua entrega</small></div>
+   <p class="b-saldo-info" id="pts-saldo-info"></p>
+   <a class="b-link" href="#ferramentas">Calcular meus pontos</a>
+  </div>
+  <div class="b-bloco b-usar">
+   <div class="b-usar-top">
+    <div><strong id="pts-usar-txt">0 pontos</strong><span id="pts-usar-desc"></span></div>
+    <div class="b-controle">
+     <label for="pts-usar-input">Pontos a usar</label>
+     <input id="pts-usar-input" type="number" min="0" step="10" value="0">
+     <button type="button" data-usar-tudo>Usar tudo</button>
+     <button type="button" data-usar-nada>Nenhum</button>
+    </div>
+   </div>
+   <input id="pts-usar-range" type="range" min="0" max="0" step="10" value="0" aria-label="Quantos pontos usar">
+   <p id="pts-nota"></p>
+  </div>
+ </div>
+ <div id="bolsas-grid" class="b-grid"></div>
+ <p class="b-nota">Exemplo: as bolsas, os preços e as regras de pontos são fictícios e serão ajustados quando o projeto definir os valores reais.</p>
 </div></section>
 
 <section id="como-funciona" class="steps"><div class="wrap">
@@ -97,31 +162,6 @@
  </div>
 </div></section>
 
-<section id="ferramentas"><div class="wrap">
- <p class="eyebrow">Na prática</p>
- <h2>Descubra seu impacto.</h2>
- <p class="lead">Veja se o que você tem em casa pode entrar no ciclo e quanto isso pode render.</p>
- <div class="tools">
-  <div class="card">
-   <h3>Posso entregar isso?</h3>
-   <p>Toque em um item para ver o que acontece com ele.</p>
-   <div class="chips" id="quiz-chips"></div>
-   <div class="verdict" id="quiz-verdict" aria-live="polite"><div class="ico">?</div><div><strong>Escolha um item</strong><span>O resultado aparece aqui.</span></div></div>
-  </div>
-  <div class="card">
-   <h3>Calculadora de impacto</h3>
-   <p>Estime o que a sua entrega evita de descarte.</p>
-   <div class="field"><label for="calc-mat">Material</label><select id="calc-mat"></select></div>
-   <div class="field"><label for="calc-qtd">Quantidade <span id="calc-qtd-out"></span></label><input type="range" id="calc-qtd" min="1" max="30" value="5"></div>
-   <div class="stats" aria-live="polite">
-    <div class="stat"><b id="calc-kg">0</b><span>kg de resíduo evitado</span></div>
-    <div class="stat"><b id="calc-bolsas">0</b><span id="calc-bolsas-txt">bolsas possíveis</span></div>
-   </div>
-  </div>
- </div>
- <p class="note">Ferramentas ilustrativas: a lista de materiais aceitos e os valores da calculadora são exemplos e serão substituídos pelos dados oficiais do projeto.</p>
-</div></section>
-
 <section id="transparencia"><div class="wrap">
  <p class="eyebrow">Nosso compromisso</p>
  <h2>Transparência em cada etapa.</h2>
@@ -150,7 +190,7 @@
 </main>
 
 <a class="wa-float" data-contact="whatsapp" href="#contato" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
- <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 4C9.4 4 4 9 4 15.2c0 2.200.7 4.200 1.800 5.900L4.200 28l7-1.700c1.500.8 3 1.200 4.800 1.200 6.600 0 12-5 12-11.200S22.600 4 16 4z"/><circle cx="11" cy="15.500" r="1.800" fill="#25d366"/><circle cx="16" cy="15.500" r="1.800" fill="#25d366"/><circle cx="21" cy="15.500" r="1.800" fill="#25d366"/></svg>
+ <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 4C9.4 4 4 9 4 15.2c0 2.2.7 4.2 1.8 5.9L4.2 28l7-1.7c1.5.8 3 1.2 4.8 1.2 6.6 0 12-5 12-11.2S22.6 4 16 4z"/><circle cx="11" cy="15.5" r="1.8" fill="#25d366"/><circle cx="16" cy="15.5" r="1.8" fill="#25d366"/><circle cx="21" cy="15.5" r="1.8" fill="#25d366"/></svg>
 </a>
 
 <footer><div class="wrap">
@@ -166,7 +206,7 @@
  els.forEach(function(el){
   if(seen.has(el))return; seen.add(el);
   el.classList.add('reveal');
-  var sibs=Array.prototype.filter.call(el.parentNode.children,function(c){return c.classList.contains('card')||c.classList.contains('step')||c.tagName==='LI'||el.parentNode===el.closest('.hero')&&false});
+  var sibs=Array.prototype.filter.call(el.parentNode.children,function(c){return c.classList.contains('card')||c.classList.contains('step')||c.tagName==='LI'});
   var i=sibs.indexOf(el);
   if(i<0&&el.parentNode.matches('.hero > div:first-child'))i=Array.prototype.indexOf.call(el.parentNode.children,el);
   el.style.setProperty('--d',(Math.max(i,0)*0.12)+'s');
@@ -229,7 +269,7 @@
 var CONTATO={
  whatsapp:'5500000000000',          // só números: 55 + DDD + número
  email:'contato@example.com',
- instagram:'seu_instagram',         // sem o @
+ instagram:'eco.loop.store',      // sem o @
  mensagem:'Olá! Vim pelo site do EcoLoop e gostaria de saber mais.'
 };
 (function(){
@@ -256,69 +296,8 @@ var CONTATO={
  window.addEventListener('resize',function(){if(window.innerWidth>960)setMenu(false)});
 })();
 </script>
-<script>
-/* ===== CONFIGURAÇÃO DAS FERRAMENTAS: edite com os dados reais do projeto ===== */
-/* s: 'sim' (aceito), 'avaliar' (depende da triagem) ou 'nao' (não aceito) */
-var ITENS=[
- {n:'Camisetas e tecidos limpos',s:'sim',t:'Podem virar matéria-prima das bolsas, se estiverem em boa condição.'},
- {n:'Calça jeans',s:'sim',t:'O jeans é resistente e muito bom para fazer bolsas.'},
- {n:'Lona de banner',s:'sim',t:'Material forte e impermeável, ideal para reaproveitar.'},
- {n:'Garrafa PET',s:'sim',t:'Segue para reciclagem especializada com os parceiros.'},
- {n:'Roupas rasgadas ou sujas',s:'avaliar',t:'Passam pela triagem. Se não servirem para bolsas, podem ser recicladas.'},
- {n:'Pilhas e eletrônicos',s:'nao',t:'Exigem descarte específico. Procure um ponto de coleta apropriado.'},
- {n:'Lixo orgânico',s:'nao',t:'Não é aceito. Prefira a compostagem.'}
-];
-/* kg: peso médio de cada unidade | kgBolsa: kg de material por bolsa (null = vai para reciclagem) */
-var MATERIAIS=[
- {n:'Camisetas',un:'camisetas',kg:0.2,kgBolsa:0.35,max:30},
- {n:'Calças jeans',un:'calças',kg:0.6,kgBolsa:0.5,max:20},
- {n:'Lona de banner (m²)',un:'m²',kg:0.45,kgBolsa:0.6,max:30},
- {n:'Garrafas PET',un:'garrafas',kg:0.03,kgBolsa:null,max:100}
-];
-(function(){
- var fmt=function(v){return v.toLocaleString('pt-BR',{maximumFractionDigits:1})};
- var $=function(id){return document.getElementById(id)};
-
- /* Posso entregar isso? */
- var box=$('quiz-chips'),ver=$('quiz-verdict');
- var rot={sim:['✓','Pode entregar'],avaliar:['!','Passa por triagem'],nao:['✕','Não aceitamos']};
- ITENS.forEach(function(it){
-  var b=document.createElement('button');
-  b.type='button';b.className='chip';b.textContent=it.n;b.setAttribute('aria-pressed','false');
-  b.addEventListener('click',function(){
-   Array.prototype.forEach.call(box.children,function(c){c.setAttribute('aria-pressed','false')});
-   b.setAttribute('aria-pressed','true');
-   ver.className='verdict '+it.s;
-   ver.innerHTML='<div class="ico"></div><div><strong></strong><span></span></div>';
-   ver.querySelector('.ico').textContent=rot[it.s][0];
-   ver.querySelector('strong').textContent=rot[it.s][1];
-   ver.querySelector('span').textContent=it.t;
-  });
-  box.appendChild(b);
- });
-
- /* Calculadora */
- var sel=$('calc-mat'),qtd=$('calc-qtd');
- MATERIAIS.forEach(function(m,i){var o=document.createElement('option');o.value=i;o.textContent=m.n;sel.appendChild(o)});
- function calc(){
-  var m=MATERIAIS[+sel.value],q=+qtd.value;
-  $('calc-qtd-out').textContent='('+q+' '+m.un+')';
-  var kg=q*m.kg;
-  $('calc-kg').textContent=fmt(kg);
-  if(m.kgBolsa){
-   $('calc-bolsas').textContent='≈ '+fmt(kg/m.kgBolsa);
-   $('calc-bolsas-txt').textContent='bolsas possíveis (estimativa)';
-  }else{
-   $('calc-bolsas').textContent='♻';
-   $('calc-bolsas-txt').textContent='segue para reciclagem especializada';
-  }
- }
- sel.addEventListener('change',function(){
-  var m=MATERIAIS[+sel.value];qtd.max=m.max;if(+qtd.value>m.max)qtd.value=m.max;calc();
- });
- qtd.addEventListener('input',calc);
- calc();
-})();
-</script>
+<script src="mascote.js"></script>
+<script src="calculadora.js"></script>
+<script src="bolsas.js"></script>
 </body>
 </html>

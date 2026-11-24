@@ -1,0 +1,33 @@
+<!-- 1) No <head> do ecoloop.html, depois dos outros CSS: -->
+<link rel="stylesheet" href="bolsas.css">
+
+<!-- 2) Cole esta seção ANTES de #contato (por exemplo, depois de #como-funciona ou #produtos): -->
+<section id="bolsas">
+  <div class="b-wrap">
+    <h2>Suas entregas viram desconto</h2>
+    <p class="b-intro">Cada material entregue em um ponto de coleta da EcoLoop gera pontos. Na hora de comprar uma bolsa, os pontos abatem o preço. Mova o controle para simular.</p>
+
+    <div class="b-saldo">
+      <div class="b-saldo-top">
+        <div class="b-saldo-num"><span id="pts-big">250</span><small>pontos</small></div>
+        <div class="b-controle">
+          <input id="pts-input" type="number" min="0" step="10" value="250" aria-label="Quantidade de pontos">
+          <button type="button" data-add-pts="50">+50</button>
+          <button type="button" data-add-pts="200">+200</button>
+          <button type="button" data-reset-pts>Zerar</button>
+        </div>
+      </div>
+      <input id="pts-range" type="range" min="0" max="2000" step="10" value="250" aria-label="Simular pontos acumulados">
+      <p id="pts-nota"></p>
+    </div>
+
+    <div id="bolsas-grid" class="b-grid"></div>
+
+    <p class="b-nota">Exemplo: as bolsas, os preços e as regras de pontos são fictícios e serão ajustados quando o projeto definir os valores reais.</p>
+  </div>
+</section>
+
+<!-- 3) No fim do <body>, junto dos outros scripts (depois do script que define CONTATO): -->
+<script src="bolsas.js"></script>
+
+<!-- 4) Opcional: no menu, adicione  <a href="#bolsas">Bolsas</a>  -->
